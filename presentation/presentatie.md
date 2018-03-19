@@ -42,4 +42,4 @@ fun main(args : Array<String>) {
 
 ### Bedankt
 
-* Slides zijn beschikbaar op staq.info
+* Slides zijn beschikbaar op quintor.info

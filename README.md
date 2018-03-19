@@ -14,8 +14,8 @@ Hier kan de presentatie gedeeld worden die gegeven wordt tijdens de hands-on ses
 __Hier ook graag de opdrachten in opnemen__
 
 (er is standaard een reveal.js template aanwezig, zie de README.md voor meer informatie<br/>
-Na het aanmaken van een branch staat de reveal.js presentatie online op staq.info:<br/>
-qho-{branch_name}.staq.info)
+Na het aanmaken van een branch staat de reveal.js presentatie online op quintor.info:<br/>
+{branch_name}.quintor.info)
 
 ## Installatie
 Op de command-line gaat dit als volgt:
