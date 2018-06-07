@@ -1,6 +1,6 @@
 # Quintor Hands-on Sessies
 
-In deze repository vind je een template voor je hands-on sessie. Hieronder staat uitgelegd wat de content is van de verschillende mappen.
+Hieronder staat uitgelegd wat de content is van de verschillende mappen.
 
 ### assignment
 Het initiele project wat iedereen kan gebruiken als startpunt voor de hands-on sessie.
