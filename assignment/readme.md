@@ -19,9 +19,53 @@ Navigeer naar de pagina waarop alle filsm staan: `/movies`. Op deze pagina is ee
 
 ### Opdracht 1: 
 
-**TODO backend opdracht**
+Allereerst: Backend! Om te beginnen met graphql in spring moeten eerst de dependencies geinstaleerd worden.
+
+[SpringBoot + GraphQL](http://www.baeldung.com/spring-graphql)
+
+> Instaleer de benodigde dependencies om graphql te gebruiken in spring
 
 ### Opdracht 2: 
+
+Om GraphQL te gebruiken is er een schema nodig waarin de GrahpQL API moet voldoen. Hierin worden de type objecten gedefineerd en wordt er beschreven welke queries er gedaan kunnen worden.
+
+[Introductie GrahpQL](https://graphql.github.io/learn/)
+
+> Maak een schema waarin alle domein modellen zitten. noem dit bestand
+
+voorbeeld: 
+```
+type Rating {
+  movieId: Int
+  userId: Int
+  rating: Int
+  timestamp: Int
+}
+```
+
+### Opdracht 3: 
+
+Met het gemaakte schema uit opdracht 1 kunnen er geen referenties worden gequeried. Dit komt omdat zoals in het voorbeeld gegeven, movieId, geen complex type is. Hierop kunnen geen queries verder gemaakt worden.
+Om dit probleem te tackelen moeten we de ids veranderen voor het volledige object.
+
+> Vervang alle id velden voor referenties naar een volledig object.
+
+
+### Opdracht 4: 
+
+Zodra alle types zijn gedefinieerd in het schema kunnen we een extra type introduceren: 'Query'. Dit type bevat de queries die gedaan kunnen worden.
+
+> Maak een Query type aan met een veld `movies`. Dit moet een array van movies zijn.
+
+
+### Opdracht 5: 
+
+De queries die benoemd zijn het het GraphQL schema moeten elk zijn benoemd in een resolver. In spring is het voldoende om een implementatie te maken van `GraphQLQueryResolver`
+
+> Maak in een grahpql package een nieuwe resolver class en implementeer de `GraphQLQueryResolver` interface.
+
+
+### Opdracht 6: 
 
 **TODO backend opdracht**
 
@@ -31,7 +75,7 @@ Navigeer naar de pagina waarop alle filsm staan: `/movies`. Op deze pagina is ee
 
 ### Opdracht n+1:
 
-Om te beginnen met GrahpQL en Apollo in angular moeten eerst de dependencies worden geinstaleerd.
+Nu de backend staat, gaan we werken aan de frontend! Om te beginnen met GrahpQL en Apollo in angular moeten er eerst weer dependencies worden geinstaleerd.
 
 [Apollo installatie handleiding](https://www.apollographql.com/docs/angular/basics/setup.html#installation)
  
