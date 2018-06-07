@@ -1,0 +1,25 @@
+<staq-navbar [navigationItems]="navItems"></staq-navbar>
+<div class="container pt-2">
+  
+  <table class="table table-hover">
+    <thead>
+    <tr>
+      <th scope="col">movie</th>
+      <th scope="col">rating</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let rating of ratings">
+      <th scope="row"><a href="/movies/{{ rating.movieId }}">{{ rating.movieId }}</a></th>
+      <td> {{ rating.rating }}</td>
+    </tr>
+    </tbody>
+  </table>
+  
+  <staq-pagination
+    [currentPage]="ratingsPageOptions.page"
+    [totalPages]="ratingsPageOptions.totalPages"
+    (paginationClicked)="updatePage($event)">
+  </staq-pagination>
+
+</div>

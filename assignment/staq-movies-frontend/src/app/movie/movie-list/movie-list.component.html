@@ -1,0 +1,23 @@
+<table class="table table-hover">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">title</th>
+    <th scope="col">genres</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let movie of movies" (click)="openMovieDetails(movie)">
+    <th scope="row"> {{ movie.id }}</th>
+    <td> {{ movie.title }}</td>
+    <td> {{ movie.genres.join(', ')}}</td>
+  </tr>
+  </tbody>
+</table>
+
+<staq-pagination
+  [currentPage]="pageOptions.page"
+  [totalPages]="pageOptions.totalPages"
+  (paginationClicked)="updatePage($event)">
+</staq-pagination>
+

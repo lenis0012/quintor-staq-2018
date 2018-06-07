@@ -1,0 +1,43 @@
+@import "~bootstrap/scss/bootstrap";
+
+.page-item {
+
+  &:not(.spacer) {
+    .page-link {
+      border-radius: 4px;
+      margin-left: 2px;
+      margin-right: 2px;
+      color: #C23350;
+    }
+  }
+
+  :hover {
+    background-color: transparent;
+  }
+
+  &.active {
+    .page-link {
+      background-color: #C23350;
+      color: #FFF;
+    }
+  }
+
+  .page-link {
+    border: 0;
+    font-weight: 400;
+    font-size: 12px;
+    height: 28px;
+    text-align: center;
+    padding: 8px;
+
+    &:not(.text-button) {
+      width: 28px;
+    }
+  }
+
+  .spacer {
+    margin-left: -2px;
+    margin-right: -2px;
+  }
+
+}

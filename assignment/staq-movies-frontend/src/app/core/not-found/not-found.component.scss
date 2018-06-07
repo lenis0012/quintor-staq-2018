@@ -1,0 +1,39 @@
+@import "~bootstrap/scss/bootstrap";
+
+body {
+  background-color: $white !important;
+}
+
+.container-fluid {
+  height: 100%;
+  width: 100%;
+  > .row {
+    height: 100%;
+    > * {
+      @media (min-width: 768px) {
+        padding-top: 15%;
+      }
+      @media (max-width: 767px) {
+        padding-top: 100px;
+      }
+      height: 100%;
+    }
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  text-align: center;
+}
+
+.status-code {
+  font-size: 72px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.status-text {
+  font-size: 24px;
+  font-weight: 400;
+  color: #333;
+}
