@@ -39,11 +39,6 @@ Tijd|Onderwerp
 
 ### Problemen met REST
 
-<br>
-<br>
-
-###### https://git.quintor.nl/Quintor/staq-graphql
-
 
 --
 
@@ -414,10 +409,6 @@ Note:
 # Hands-on
 
 ### GraphQL
-
-<br>
-<br>
-###### https://git.quintor.nl/Quintor/staq-graphql
 
 ---
 
