@@ -1,0 +1,65 @@
+<ul class="pagination" [ngClass]="justify" *ngIf="totalPages > 1">
+  
+  <li class="page-item"
+      (click)="onPreviousClicked()"
+      *ngIf="showTextualButtons && currentPage !== 1"
+      [ngClass]="isCurrentPage(1) ? 'disabled' : ''">
+    <a class="page-link text-button" href="javascript:void(0);">
+      vorige
+    </a>
+  </li>
+  
+  <!-- FIRST PAGE ALWAYS SHOWN -->
+  <li class="page-item"
+      (click)="onPageItemClicked(1)"
+      [ngClass]="isCurrentPage(1) ? 'active' : ''">
+    <a class="page-link"
+       href="javascript:void(0);">
+      1
+    </a>
+  </li>
+  
+  <!-- PAGES IN BETWEEN -->
+  <li class="page-item disabled spacer"
+      *ngIf="pages[0] > 2">
+    <a class="page-link"> ... </a>
+  </li>
+  
+  <li class="page-item"
+      [ngClass]="isCurrentPage(page) ? 'active' : ''"
+      (click)="onPageItemClicked(page)"
+      *ngFor="let page of pages">
+    <a class="page-link"
+       href="javascript:void(0);">
+      {{ page }}
+    </a>
+  </li>
+  
+  <li class="page-item disabled spacer"
+      *ngIf="pages[pages.length -1] < totalPages -1">
+    <a class="page-link"> ... </a>
+  </li>
+  
+  
+  <!-- LAST PAGE  -->
+  <li class="page-item"
+      (click)="onPageItemClicked(totalPages)"
+      [ngClass]="isCurrentPage(totalPages) ? 'active' : ''"
+      *ngIf="totalPages !== 1">
+    <a class="page-link"
+       href="javascript:void(0);">
+      {{ totalPages }}
+    </a>
+  </li>
+  
+  <li class="page-item"
+      (click)="onNextClicked()"
+      *ngIf="showTextualButtons && currentPage !== totalPages"
+      [ngClass]="isCurrentPage(totalPages) ? 'disabled' : ''">
+    <a class="page-link text-button" href="javascript:void(0);">
+      volgende
+    </a>
+  </li>
+
+</ul>
+

@@ -1,0 +1,54 @@
+<section class="row information">
+  <h1>Movie</h1>
+  
+  <table class="table">
+    <tbody>
+    <tr>
+      <th scope="row">Movie title</th>
+      <td> {{ movie?.title  }}</td>
+    </tr>
+    <tr>
+      <th scope="row">Genres</th>
+      <td> {{ movie?.genres.join(', ') }}</td>
+    </tr>
+    <tr>
+      <th scope="row">IMDB</th>
+      <td><a href="https://www.imdb.com/title/tt{{ movie?.links.imdbId }}/?ref_=fn_al_tt_1"> {{ movie?.links.imdbId }} </a></td>
+    </tr>
+    <tr>
+      <th scope="row">TMDB</th>
+      <td><a href="https://www.themoviedb.org/movie/{{ movie?.links.tmdbId }}"> {{ movie?.links.tmdbId }} </a></td>
+    </tr>
+    </tbody>
+  </table>
+
+</section>
+<section class="row ratings">
+  <h3>Ratings</h3>
+  
+  <table class="table table-hover">
+    <thead>
+    <tr>
+      <th scope="col">user</th>
+      <th scope="col">rating</th>
+      <th scope="col">time</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let rating of movie?.ratings">
+      <th scope="row"><a href="/users/{{ rating.user?.id }}">{{ rating.user?.id }}</a></th>
+      <td> {{ rating.rating }}</td>
+      <td> {{ rating.timestamp * 1000 | date:'fullDate' }}</td>
+    </tr>
+    </tbody>
+  </table>
+
+
+</section>
+
+
+<staq-pagination
+  [currentPage]="ratingsPageOptions.page"
+  [totalPages]="ratingsPageOptions.totalPages"
+  (paginationClicked)="updatePage($event)">
+</staq-pagination>
