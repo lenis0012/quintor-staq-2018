@@ -30,7 +30,6 @@ export class UserComponent implements OnInit {
   ];
 
   public user: User;
-  public ratingsPageOptions: Pageable = {};
 
   constructor( private route: ActivatedRoute, private router: Router, private apollo: Apollo ) {
   }

@@ -17,9 +17,7 @@ import gql from 'graphql-tag';
 export class MovieDetailComponent implements OnInit {
 
   public movie: Movie;
-
   public ratingsPageOptions: Pageable = {};
-
 
   constructor( private route: ActivatedRoute, private router: Router, private apollo: Apollo ) {
   }

@@ -18,7 +18,6 @@ import gql from 'graphql-tag';
 export class MovieListComponent implements OnInit {
 
   public pageOptions: Pageable = {};
-
   public movies: Observable<Movie[]>;
 
   constructor( private router: Router, private apollo: Apollo ) {
@@ -28,13 +27,7 @@ export class MovieListComponent implements OnInit {
     this.getMovies();
   }
 
-  updatePage( page: number ) {
-    this.getMovies(page - 1);
-  }
-
-
-  // TODO: Reimplement pagination in gql
-  getMovies( page: number = 0 ) {
+  getMovies() {
     const moviesQuery = gql`
       query {
         movies {
@@ -45,14 +38,8 @@ export class MovieListComponent implements OnInit {
       }
     `;
 
-    this.movies = this.apollo.query<Query>({query: moviesQuery})
+    this.movies = this.apollo.query<Query>({ query: moviesQuery, variables: {}})
                       .map(result => result.data.movies);
-
-    this.pageOptions = {
-      page      : 1,
-      totalPages: 1,
-      size      : 3
-    };
   }
 
   openMovieDetails( movie: Movie ) {
