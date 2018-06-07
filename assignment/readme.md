@@ -1,16 +1,3 @@
-# Staq - GraphQL 
-
-
-In deze repository vind je de code en opdrachten die horen bij de GrahpQL presentatie geven tijdens StaQ op 15 juni 2018.
-
-- Lennart ten Wolde
-- Marcel Hollink
-
-De backend van het project is te vinden in [staq-movies-backend](/staq-movies-backend).
-
-De backend van het project is te vinden in [staq-movies-frontend](/staq-movies-frontend).
-
-
 # Opdrachten
 
 ## Problems with REST
