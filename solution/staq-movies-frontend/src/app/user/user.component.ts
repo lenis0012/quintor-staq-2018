@@ -4,7 +4,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import { User } from '../shared/models/types';
 import { Query } from '../shared/models/query';
-import { Pageable } from '../shared/models/pageable';
 
 import { Apollo } from 'apollo-angular';
 import 'rxjs/add/operator/map';
