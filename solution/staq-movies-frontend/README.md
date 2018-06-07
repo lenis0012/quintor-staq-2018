@@ -157,3 +157,31 @@ Lastly, I subscribed to the result of the `query` method in Apollo to extract th
 
 The changes in the controller of the component lead to the removal of the public fields `ratings` and `links`. We must apply those to the HTML file as well. I used a `safe navigator` operator since the data comes in via an async callback. for example: `movie?.title`, `movie?.links.imdbId` and `*ngFor="let rating of movie?.ratings`.
 
+##### User details
+
+Lastly i've rewitten the user component that is still using REST. I removed the UserService and added the Apollo Service with all the necessary imports.
+I implemented the follwing query to retrieve the user:
+
+```
+query user($userId: Int){
+  user(id: $userId) {
+    id
+    ratings {
+      movie {
+        id
+        title
+      }
+      rating
+      timestamp
+    }
+  }
+}
+```
+
+I added a public user variable to be used in the html file and added the apollo code:
+
+```
+this.apollo.query<Query>({ query: userQuery, variables: { userId: id } })
+  .map(result => result.data.user)
+  .subscribe(( user ) => this.user = user);
+```
