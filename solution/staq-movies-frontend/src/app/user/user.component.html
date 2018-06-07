@@ -4,13 +4,15 @@
   <table class="table table-hover">
     <thead>
     <tr>
+      <th scope="col">movieId</th>
       <th scope="col">movie</th>
       <th scope="col">rating</th>
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let rating of ratings">
-      <th scope="row"><a href="/movies/{{ rating.movieId }}">{{ rating.movieId }}</a></th>
+    <tr *ngFor="let rating of user?.ratings">
+      <th scope="row"><a href="/movies/{{ rating.movie.id }}">{{ rating.movie.id }}</a></th>
+      <td>{{ rating.movie.title }}</td>
       <td> {{ rating.rating }}</td>
     </tr>
     </tbody>
@@ -18,8 +20,7 @@
   
   <staq-pagination
     [currentPage]="ratingsPageOptions.page"
-    [totalPages]="ratingsPageOptions.totalPages"
-    (paginationClicked)="updatePage($event)">
+    [totalPages]="ratingsPageOptions.totalPages">
   </staq-pagination>
 
 </div>

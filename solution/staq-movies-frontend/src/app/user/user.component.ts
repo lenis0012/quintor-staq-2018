@@ -1,9 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { NavbarItem } from '../shared/components/navbar/navbar.component';
-import { UserService } from '../shared/services/user.service';
-import { ActivatedRoute } from '@angular/router';
-import { Rating } from '../shared/models/types';
+import { ActivatedRoute, Router } from '@angular/router';
+
+import { User } from '../shared/models/types';
+import { Query } from '../shared/models/query';
 import { Pageable } from '../shared/models/pageable';
+
+import { Apollo } from 'apollo-angular';
+import 'rxjs/add/operator/map';
+import gql from 'graphql-tag';
 
 @Component({
   selector   : 'staq-user',
@@ -11,8 +16,6 @@ import { Pageable } from '../shared/models/pageable';
   styleUrls  : [ './user.component.scss' ]
 })
 export class UserComponent implements OnInit {
-
-  public userId: number;
 
   public navItems: NavbarItem[] = [
     {
@@ -26,34 +29,35 @@ export class UserComponent implements OnInit {
     }
   ];
 
-  public ratings: Rating[] = [];
+  public user: User;
   public ratingsPageOptions: Pageable = {};
 
-
-  constructor( private route: ActivatedRoute, private userService: UserService ) {
+  constructor( private route: ActivatedRoute, private router: Router, private apollo: Apollo ) {
   }
 
   ngOnInit() {
-    this.route.params.subscribe(( params: any ) => {
-      this.userId = params.id;
-      this.getRatings();
-    });
-
+    this.route.params.subscribe(( params: any ) => this.getUser(params.id));
   }
 
-  getRatings( page: number = 0 ): void {
-    this.userService.getRatings(this.userId, page).subscribe(( next: any ) => {
-      this.ratings = next.content;
-      this.ratingsPageOptions = {
-        page      : next.number + 1,
-        totalPages: next.totalPages,
-        size      : next.numberOfElements
-      };
-    });
-  }
+  getUser( id: number ) {
+    const userQuery = gql`
+        query user($userId: Int){
+          user(id: $userId) {
+            id
+            ratings {
+              movie {
+                id
+                title
+              }
+              rating
+              timestamp
+            }
+          }
+        }
+      `;
 
-
-  updatePage( page: number ) {
-    this.getRatings(page - 1);
+    this.apollo.query<Query>({ query: userQuery, variables: { userId: id } })
+        .map(result => result.data.user)
+        .subscribe(( user ) => this.user = user);
   }
 }

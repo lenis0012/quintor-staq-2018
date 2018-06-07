@@ -5,7 +5,6 @@ import { Query } from '../../shared/models/query';
 import { Pageable } from '../../shared/models/pageable';
 
 import { Apollo } from 'apollo-angular';
-import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
 import gql from 'graphql-tag';
