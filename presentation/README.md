@@ -1,7 +1,7 @@
 # Hands-on Sessies Presentatie
 
 > De presentatie in deze repository heeft op sommige slides problemen met de grote van het font.
-> Een up-to-date presenatie met juiste formatting is online vindbaar op `2018-grahpql.staq.info`
+> Een up-to-date presenatie met juiste formatting is online vindbaar op [2018-graphql.staq.info](http://2018-grahpql.staq.info).
 
 In deze repository vind je een template voor je hands-on sessie gemaakt binnen reveal.js
 
