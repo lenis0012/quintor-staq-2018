@@ -9,16 +9,16 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/movies/{id}/links")
-public class MovieLinkController {
+public class LinkController {
 
-    private final MovieLinkRepository movieLinkRepository;
+    private final LinkRepository linkRepository;
 
-    public MovieLinkController(MovieLinkRepository movieLinkRepository) {
-        this.movieLinkRepository = movieLinkRepository;
+    public LinkController(LinkRepository linkRepository) {
+        this.linkRepository = linkRepository;
     }
 
     @GetMapping("")
-    public List<MovieLink> getLinks(@PathVariable int id) {
-        return movieLinkRepository.findAllByMovieId(id);
+    public List<Link> getLinks(@PathVariable int id) {
+        return linkRepository.findAllByMovieId(id);
     }
 }

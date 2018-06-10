@@ -3,7 +3,7 @@ package nl.quintor.staq.graphql.movies.movielinks;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "links")
-public class MovieLink {
+public class Link {
     private int movieId;
 
     private String imdbId;

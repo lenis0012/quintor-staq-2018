@@ -1,6 +1,6 @@
 package nl.quintor.staq.graphql.movies.movies;
 
-import nl.quintor.staq.graphql.movies.movielinks.MovieLinkRepository;
+import nl.quintor.staq.graphql.movies.movielinks.LinkRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,7 +16,7 @@ public class MovieController {
 
     private final MovieRepository movieRepository;
 
-    public MovieController(MovieRepository movieRepository, MovieLinkRepository movieLinkRepository) {
+    public MovieController(MovieRepository movieRepository, LinkRepository linkRepository) {
         this.movieRepository = movieRepository;
     }
 

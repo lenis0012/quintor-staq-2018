@@ -5,6 +5,7 @@ import nl.quintor.staq.graphql.movies.movies.Movie;
 import nl.quintor.staq.graphql.movies.movies.MovieRepository;
 import nl.quintor.staq.graphql.movies.users.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -20,10 +21,8 @@ public class RootResolver implements GraphQLQueryResolver {
         this.movieRepository = movieRepository;
     }
 
-    public List<Movie> movies() {
-        List<Movie> movies = new ArrayList<>();
-        movieRepository.findAll().forEach(movies::add);
-        return movies;
+    public List<Movie> movies(int page, int pageSize) {
+        return movieRepository.findAll(PageRequest.of(page, pageSize)).getContent();
     }
 
     public Optional<Movie> movie(int id) {

@@ -5,7 +5,7 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
-public interface MovieLinkRepository extends CrudRepository<MovieLink, ObjectId> {
+public interface LinkRepository extends CrudRepository<Link, ObjectId> {
 
-    List<MovieLink> findAllByMovieId(int movieId);
+    List<Link> findAllByMovieId(int movieId);
 }

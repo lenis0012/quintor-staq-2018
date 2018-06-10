@@ -1,15 +1,15 @@
 type Query {
-  movies: [Movie]
+  movies(page: Int = 0, pageSize: Int = 20): [Movie]!
   movie(id: Int): Movie
   user(id: Int): User
 }
 
 type Movie {
-  id: Int
-  title: String
-  genres: [String]
-#  ratings: [Rating]
-#  links: Link
+  id: Int!
+  title: String!
+  genres: [String]!
+  ratings(page: Int = 0, pageSize: Int = 20): [Rating]!
+  links: [Link]!
 #  tags: [Tag]
 }
 
@@ -20,10 +20,16 @@ type User {
 }
 
 type Rating {
-#  movie: Movie
-#  user: User
-  rating: Int
-  timestamp: Int
+  movieId: Int!
+  userId: Int!
+  rating: Int!
+  timestamp: Int!
+}
+
+type Link {
+  movieId: Int!
+  imdbId: String
+  tmdbId: String
 }
 
 #type Link {
