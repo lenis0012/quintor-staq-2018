@@ -11,6 +11,8 @@ Uitgewerkt project waarnaar toe gewerkt wordt tijdens de hands-on sessie.
 ### presentation
 Hier kan de presentatie gedeeld worden die gegeven wordt tijdens de hands-on sessie.
 
+> De presentatie in deze map is mogelijk niet juist geformat, een live en up-to-date versie is beschikbaar op [2018-graphql.staq.info](http://2018-grahpql.staq.info).
+
 __Hier ook graag de opdrachten in opnemen__
 
 (er is standaard een reveal.js template aanwezig, zie de README.md voor meer informatie<br/>
@@ -29,12 +31,9 @@ git clone quintorgit@git.quintor.nl:staq/quintor-handson-sessies.git
 ```
 
 De inhoud van de repository zal nu in een directory genaamd quintor-handson-sessies staan.
-Ga in deze directory staan en maak nu je eigen branch.
+Ga in deze directory staan verander naar de grahpql branch.
 Op de command-line werkt dit als volgt:
 
 ```
-git branch jouwbranchnaam
-git checkout jouwbranchnaam
+git checkout graphql
 ```
-
-Uiteraard vervang je "jouwbranchnaam" door iets beters :)
