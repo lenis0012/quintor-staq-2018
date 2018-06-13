@@ -10,13 +10,11 @@ type Movie {
   genres: [String]!
   ratings(page: Int = 0, pageSize: Int = 20): [Rating]!
   links: [Link]!
-#  tags: [Tag]
 }
 
 type User {
   id: Int
   ratings: [Rating]
-#  tags: [Tag]
 }
 
 type Rating {
@@ -31,25 +29,3 @@ type Link {
   imdbId: String
   tmdbId: String
 }
-
-#type Link {
-#  movie: Movie
-#  imdbId: String
-#  tmdbId: String
-#}
-#
-#type Tag {
-#  movie: Movie
-#  user: User
-#  tag: String
-#  timestamp: Int
-#}
-#type Query {
-#    movies: [Movie!]
-#}
-#
-#type Movie {
-#    id: Int!
-#    title: String!
-#    genres: [String!]
-#}
