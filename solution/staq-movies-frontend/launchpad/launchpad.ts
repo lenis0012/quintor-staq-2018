@@ -2,7 +2,7 @@ import {makeExecutableSchema} from 'graphql-tools';
 
 const typeDefs = `
   type Query {
-    movies: [Movie]z
+    movies: [Movie]
     movie(id: Int): Movie
 		user(id: Int): User
   }
