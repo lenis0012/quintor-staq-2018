@@ -1,5 +1,5 @@
 type Query {
-  movies: [Movie]
+  movies(page: Int = 0, pageSize: Int = 20): [Movie]
   movie(id: Int): Movie
   user(id: Int): User
 }
@@ -8,7 +8,7 @@ type Movie {
   id: Int
   title: String
   genres: [String]
-  ratings: [Rating]
+  ratings(page: Int = 0, pageSize: Int = 20): [Rating]
   links: Link
   tags: [Tag]
 }
