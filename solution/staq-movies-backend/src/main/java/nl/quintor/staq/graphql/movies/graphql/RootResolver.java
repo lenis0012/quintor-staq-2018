@@ -25,6 +25,10 @@ public class RootResolver implements GraphQLQueryResolver {
         return movieRepository.findAll(PageRequest.of(page, pageSize)).getContent();
     }
 
+    public long movieCount() {
+        return movieRepository.count();
+    }
+
     public Optional<Movie> movie(int id) {
         return movieRepository.findById(id);
     }

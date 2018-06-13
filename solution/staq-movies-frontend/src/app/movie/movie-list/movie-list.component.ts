@@ -16,9 +16,10 @@ import gql from 'graphql-tag';
   styleUrls  : [ './movie-list.component.scss' ]
 })
 export class MovieListComponent implements OnInit {
-
-  public pageOptions: Pageable = {};
+  public query: Observable<Query>;
   public movies: Observable<Movie[]>;
+  public totalPages: Observable<number>;
+  public page = 1;
 
   constructor( private router: Router, private apollo: Apollo ) {
   }
@@ -27,19 +28,30 @@ export class MovieListComponent implements OnInit {
     this.getMovies();
   }
 
+  updatePage( page: number ) {
+    // this.getMovies(page - 1);
+    // this.page = page - 1;
+    this.page = page;
+    console.log(page);
+    this.getMovies();
+  }
+
   getMovies() {
     const moviesQuery = gql`
       query {
-        movies {
+        movies(page: ${this.page - 1}) {
           id
           title
           genres
         }
+        movieCount
       }
     `;
 
-    this.movies = this.apollo.query<Query>({ query: moviesQuery, variables: {}})
-                      .map(result => result.data.movies);
+    this.query = this.apollo.query<Query>({ query: moviesQuery, variables: {}})
+                      .map(result => result.data);
+    this.movies = this.query.map(q => q.movies);
+    this.totalPages = this.query.map(q => Math.ceil(q.movieCount / 20));
   }
 
   openMovieDetails( movie: Movie ) {

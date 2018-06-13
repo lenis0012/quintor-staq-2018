@@ -1,5 +1,6 @@
 type Query {
   movies(page: Int = 0, pageSize: Int = 20): [Movie]!
+  movieCount: Long!
   movie(id: Int): Movie
   user(id: Int): User
 }
@@ -13,19 +14,22 @@ type Movie {
 }
 
 type User {
-  id: Int
-  ratings: [Rating]
+  id: Int!
+  ratings: [Rating]!
 }
 
 type Rating {
   movieId: Int!
+  movie: Movie!
   userId: Int!
+  user: User!
   rating: Int!
   timestamp: Int!
 }
 
 type Link {
   movieId: Int!
+  movie: Movie!
   imdbId: String
   tmdbId: String
 }

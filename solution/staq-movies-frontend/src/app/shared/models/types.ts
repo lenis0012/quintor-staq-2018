@@ -4,7 +4,7 @@ export type Movie = {
   genres: string[];
 
   ratings: Rating[];
-  links: Link;
+  links: Link[];
   tags: Tag[];
 };
 

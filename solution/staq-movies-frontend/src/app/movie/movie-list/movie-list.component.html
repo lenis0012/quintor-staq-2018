@@ -14,3 +14,11 @@
   </tr>
   </tbody>
 </table>
+
+hi {{page}}
+
+<staq-pagination
+  [currentPage]="page"
+  [totalPages]="totalPages | async"
+  (paginationClicked)="updatePage($event)">
+</staq-pagination>
