@@ -81,12 +81,16 @@ Ok, dit is allemaal leuk en aardig, maar we hebben nog steeds geen flauw idee of
 Om zelf queries te maken en testen, is er een tool genaamd `GraphIQL`, I voor Interactive.  
 Als je graphIQL toevoegd aan je project, kun je op `/graphiql` queries uittesten.
 
+> Instaleer de benodigde dependencies om graphiql in spring te gebruiken.
+
 ```gradle
 compile group: 'com.graphql-java', name: 'graphiql-spring-boot-starter', version: '4.2.0'
 ```
 
-Start de applicatie op, navigeer naar `/graphiql`, en bekijk je graphql schema in de rechter balk.  
-Probeer de volgende query uit.
+> Start de applicatie op, navigeer naar `/graphiql`, en bekijk je graphql schema in de rechter balk.
+
+> Probeer de volgende query uit.
+
 ```
 query {
   movies {
