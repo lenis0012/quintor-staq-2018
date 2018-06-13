@@ -1,0 +1,11 @@
+{
+  "/api/*": {
+    "target": "https://kqpjk3qlz7.lp.gql.zone",
+    "secure": false,
+    "logLevel": "debug",
+    "pathRewrite": {
+      "api/": ""
+    },
+    "changeOrigin": true
+  }
+}
