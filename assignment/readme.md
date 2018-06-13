@@ -107,6 +107,9 @@ Om de flexabiliteit van onze query iets te verbreden, kunnen we referenties naar
 Maak ook types voor alle andere modellen, maar laat de complex types/referenties voor nu weg.
 
 Om de ratings van een film op te kunnen halen, moeten we een referentie maken.
+
+> Voeg een `ratings` veld toe met als type een array van ratings.
+
 ```
 type Movies {
   fieds...
@@ -117,26 +120,27 @@ type Movies {
 In de MovieResolver kun je nu een method aanmaken met de naam `ratings(Movie movie)`.  
 Dankzij **graphql-java-tools** weet spring dat deze bij de movies array hoort, en dat de parameter Movie de movie is waarvan de ratings worden opgevraagd.
 
-Maar, we zitten met een probleem.  We hebben erg veel movies, en voor elke movies wordt apart alle ratings opgehaald, en dit is niet erg snel.
 
 ### Opdracht 6: Pagination 
 
-Om ons performance probleempje deels op te lossen, kunnen we pagination toepassen.  
+We zitten nu wel met een probleem. We hebben erg veel movies, en voor elke movies wordt apart alle ratings opgehaald. Dit zorgt er voor dat de load time heel snel oploopt. Om dit performance probleemp deels op te lossen, kunnen we pagination toepassen.  
 Naast simpele fields, kun je met GraphQL ook functies defineren, bijvoorbeeld zo.
+
 ```
 type Query {
   movies(page: Int = 0, pageSize: Int = 20)
 }
 ```
 
-`page` en `pageSize` kun  je nu als parameter toevoegen aan je movies method.  
-Gebruik dit om een `PageRequest` instantie te maken, met `PageRequest.of(page, pageSize)`, en hiermee pagination toe te passen op de repository.
+> Voeg de paginering parameters toe aan de movies query. 
 
-Doe dit ook bij de MovieResolver voor de ratings, en je kunt nu opgeven hoe veel resultaten je terug wilt.  
+Deze parameters kunnen gebruikt worden om een `PageRequest` instantie te maken, met `PageRequest.of(page, pageSize)`. Dit `PageRequest` kan gebruikt worden om hiermee pagination toe te passen op de repository.
 
-Je kunt de performance nog verder verbeteren door GraphQL DataLoaders toe te passen, maar we gaan eerst naar de frontend kijken.
+> Implementeer het `PageRequest` in de RootResolver. Doe dit ook voor de `ratings` in de `MovieResolver`
 
-### Opdracht 7:
+*Je kunt de performance nog verder verbeteren door GraphQL DataLoaders toe te passen, maar we gaan eerst naar de frontend kijken.*
+
+### Opdracht 7: Installation
 
 Nu de backend staat, gaan we werken aan de frontend! Om te beginnen met GrahpQL en Apollo in angular moeten er eerst weer dependencies worden geinstaleerd.
 
@@ -144,7 +148,7 @@ Nu de backend staat, gaan we werken aan de frontend! Om te beginnen met GrahpQL 
  
 > Instaleer alle dependecies voor het gebruik van Apollo in de Angular applicatie. 
 
-### Opdracht 8:
+### Opdracht 8: Create Client
 
 Om Apollo te gebruiken moet er een client worden aangemaakt in de applicatie. Dit wordt gebruikelijk is om dit in de module van de applicatie te doen. In ons geval zullen wij het doen in de `SharedModule`.
 
@@ -153,19 +157,19 @@ Om Apollo te gebruiken moet er een client worden aangemaakt in de applicatie. Di
 > Maak de Apollo client aan in de SharedModule via `apollo.create()`. 
 > Voor de URI kan `http://localhost:8080/graphql` gebruikt worden.
 
-### Opdracht 9a:
+### Opdracht 9a: Data Types
 
 Tijdens de opdrachten in de backend is er een graphql schema aangemaakt dat gebruikt wordt in de API. Hierin zijn de verschillende types en uitvoerbare queries benoemd.
 
 > Migreer de data types in `types.ts` naar de types in het schema. 
 
-### Opdracht 9b:
+### Opdracht 9b: Type Query
 
 Na het migreren van de data ontbreekt er nog 1 data type: `Query`. 
 
 > exporter een nieuwe type: `export type Query { }` vanuit het `types.ts` bestand en voeg hier alle mogelijke queries aan toe.
 
-### Opdracht 10:
+### Opdracht 10: Apollo Queries
 
 Na het aanmaken van de apollo client en het query type kan apollo als service worden gebruikt voor alle calls naar het `/graphql` endpoint. Hiervoor kan Apollo worden geinjecteerd in het component waar hij nodig is om vervolgens met behulp van `.query<Query>()` de data op te vragen.
 
@@ -173,16 +177,16 @@ Na het aanmaken van de apollo client en het query type kan apollo als service wo
 
 > Verwijder de REST calls in het `movies-list` component en vervang deze met een graphql query die er voorzorgt dat alle data weer beschikbaar is op de pagina.
 
-### Opdracht 11:
+### Opdracht 11: Query Options
 
-In opdracht n+4 hebben we een lijst van films opgehaald. Om een specefieke film op te halen moet er een variable mee worden gegeven, namelijk het `id`. Deze variable kan naast het query object worden mee geven met de `.query<Query>()` methode. 
+In opdracht 10 hebben we een lijst van films opgehaald. Om een specefieke film op te halen moet er een variable mee worden gegeven, namelijk het `id`. Deze variable kan naast het query object worden mee geven met de `.query<Query>()` methode. 
 
 [Apollo Query options](https://www.apollographql.com/docs/angular/basics/queries.html#options)
 
 > Verwijder alle data die gebruikt wordt in het `movies-detail` component en zorg ervoor dat alle data wordt opgehaald via een graphql query met variabelen.
 
 
-### Opdracht 12:
+### Opdracht 12: Finalize Migration
 
 Om de applicatie compleet te maken moet ook het `users` component wordt herschreven. 
 
