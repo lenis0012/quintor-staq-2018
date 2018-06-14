@@ -21,7 +21,7 @@ export class MovieListComponent implements OnInit {
   public totalPages: Observable<number>;
 
   public page = 1;
-  private pageSize = 30;
+  private pageSize = 15;
 
   constructor( private router: Router, private apollo: Apollo ) {
   }
@@ -62,6 +62,9 @@ export class MovieListComponent implements OnInit {
   }
 
   getAverageRating(movie: Movie) {
+
+    if (movie.ratings.length === 0) return 0;
+
     const combinedRatings = movie.ratings
                                  .map(rating => rating.rating)
                                  .reduce(( a, b) => a + b);
