@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Movie } from '../../shared/models/types';
 import { Query } from '../../shared/models/query';
-import { Pageable } from '../../shared/models/pageable';
 
 import { Apollo } from 'apollo-angular';
 import { Observable } from 'rxjs/Observable';
@@ -16,10 +15,13 @@ import gql from 'graphql-tag';
   styleUrls  : [ './movie-list.component.scss' ]
 })
 export class MovieListComponent implements OnInit {
+
   public query: Observable<Query>;
   public movies: Observable<Movie[]>;
   public totalPages: Observable<number>;
+
   public page = 1;
+  private pageSize = 30;
 
   constructor( private router: Router, private apollo: Apollo ) {
   }
@@ -29,29 +31,41 @@ export class MovieListComponent implements OnInit {
   }
 
   updatePage( page: number ) {
-    // this.getMovies(page - 1);
-    // this.page = page - 1;
     this.page = page;
-    console.log(page);
-    this.getMovies();
+    this.getMovies(page - 1);
   }
 
-  getMovies() {
+  getMovies( pageToShow = 0 ) {
     const moviesQuery = gql`
-      query {
-        movies(page: ${this.page - 1}) {
+      query movies($page: Int, $pageSize: Int) {
+        movies(page: $page, pageSize: $pageSize) {
           id
           title
           genres
+          ratings {
+            rating
+          }
         }
         movieCount
       }
     `;
 
-    this.query = this.apollo.query<Query>({ query: moviesQuery, variables: {}})
-                      .map(result => result.data);
-    this.movies = this.query.map(q => q.movies);
-    this.totalPages = this.query.map(q => Math.ceil(q.movieCount / 20));
+    this.query = this.apollo
+                     .query<Query>({
+                       query    : moviesQuery,
+                       variables: { page: pageToShow, pageSize: this.pageSize }
+                     })
+                     .map(result => result.data);
+
+    this.movies = this.query.map(data => data.movies);
+    this.totalPages = this.query.map(data => Math.ceil(data.movieCount / this.pageSize));
+  }
+
+  getAverageRating(movie: Movie) {
+    const combinedRatings = movie.ratings
+                                 .map(rating => rating.rating)
+                                 .reduce(( a, b) => a + b);
+    return combinedRatings / movie.ratings.length;
   }
 
   openMovieDetails( movie: Movie ) {
