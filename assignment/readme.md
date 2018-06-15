@@ -134,7 +134,7 @@ type Query {
 
 > Voeg de paginering parameters toe aan de movies query. 
 
-Deze parameters kunnen gebruikt worden om een `PageRequest` instantie te maken, met `PageRequest.of(page, pageSize)`. Dit `PageRequest` kan gebruikt worden om hiermee pagination toe te passen op de repository.
+Deze parameters kunnen gebruikt worden om een `PageRequest` instantie te maken. Deze `PageRequest` kan gebruikt worden om hiermee pagination toe te passen op de repository.
 
 > Implementeer het `PageRequest` in de RootResolver. Doe dit ook voor de `ratings` in de `MovieResolver`
 
@@ -192,3 +192,13 @@ Om de applicatie compleet te maken moet ook het `users` component wordt herschre
 
 > Herschrijf het users component zodat het gebruik maakt van graphql. Zorg er voor dat alle data in de tabel komt te staan.
 
+### Bonus Opdracht
+
+GraphQL is niet alleen voor het ophalen van informatie.  
+Je kunt ook mutations uitvoeren met behulp van GraphQL.  
+Je kunt dan opgeven wat voor data je terug wilt hebben na het uitvoeren van de Mutation.  
+
+Maak een mutation voor het toevoegen van een movie.  
+Lees: https://graphql.org/learn/queries/#mutations voor meer informatie over mutations.
+
+Test je nieuwe mutation met GraphIQL
