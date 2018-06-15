@@ -11,7 +11,7 @@ Uitgewerkt project waarnaar toe gewerkt wordt tijdens de hands-on sessie.
 ### presentation
 Hier kan de presentatie gedeeld worden die gegeven wordt tijdens de hands-on sessie.
 
-> De presentatie in deze map is mogelijk niet juist geformat, een live en up-to-date versie is beschikbaar op [2018-graphql.staq.info](http://2018-grahpql.staq.info).
+> De presentatie in deze map is mogelijk niet juist geformat, een live en up-to-date versie is beschikbaar op [2018-graphql.staq.info](http://2018-graphql.staq.info).
 
 __Hier ook graag de opdrachten in opnemen__
 
